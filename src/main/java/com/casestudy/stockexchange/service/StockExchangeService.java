@@ -6,6 +6,7 @@ import com.casestudy.stockexchange.persistence.repository.StockExchangeRepositor
 import com.casestudy.stockexchange.persistence.repository.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -21,6 +22,7 @@ public class StockExchangeService {
         return stockExchangeRepository.findByName(name).orElseThrow();
     }
 
+    @Transactional
     public StockExchangeEntity addStockToExchange(String name, StockEntity stock) {
         StockExchangeEntity stockExchange = stockExchangeRepository.findByName(name).orElseThrow();
         stockExchange.addStock(stock);
@@ -28,6 +30,7 @@ public class StockExchangeService {
         return stockExchangeRepository.save(stockExchange);
     }
 
+    @Transactional
     public StockExchangeEntity deleteStockFromExchange(String name, StockEntity stock) {
         StockExchangeEntity stockExchange = stockExchangeRepository.findByName(name).orElseThrow();
         stockExchange.removeStock(stock);

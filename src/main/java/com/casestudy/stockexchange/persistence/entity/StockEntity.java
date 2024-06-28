@@ -27,5 +27,4 @@ public class StockEntity {
     @ManyToMany(mappedBy = "stocks")
     private List<StockExchangeEntity> stockExchanges = new ArrayList<>();
 
-    // Constructors, Getters, and Setters
 }

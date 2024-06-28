@@ -25,9 +25,9 @@ public class StockController {
         return ResponseEntity.ok(updatedStock);
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deleteStock(@RequestBody StockEntity stock) {
-        stockService.deleteStock(stock);
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteStock(@PathVariable("id") Long id) {
+        stockService.deleteStock(id);
         return ResponseEntity.noContent().build();
     }
 }
